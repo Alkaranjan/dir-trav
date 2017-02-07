@@ -34,9 +34,13 @@ def main(argv):
 
 
 	if dirName == '':
-		dirname = 'test'
+		dirName = 'test'
 	path = os.path.dirname(os.path.abspath(__file__)) + "/" + dirName
-	trav(path)
+	if os.path.isdir(path):
+		trav(path)
+	else:
+		print('default directory "test" not found')
+		sys.exit()
 
 if __name__ == "__main__":
    main(sys.argv[1:])
