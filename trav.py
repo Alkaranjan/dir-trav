@@ -15,7 +15,7 @@ def trav(dirPath):
 def main(argv):
 	dirName = '';
 	try:
-		opts, args = getopt.getopt(argv,"hd:",["help=", "dir="])
+		opts, args = getopt.getopt(argv,"hd:",["help=", "dir=:"])
 	except getopt.GetoptError:
 		print('usage: trav.py -d <directory name>')
 		sys.exit(2)
