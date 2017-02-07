@@ -30,7 +30,6 @@ def main(argv):
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt in ('-h', "--help"):
-			print('asking help :P')
 			printOptions()
 			sys.exit()
 		elif opt in ("-d", "--directory"):
