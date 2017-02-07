@@ -12,18 +12,28 @@ def trav(dirPath):
 		for file in files:
 			printContents(root + "/" + file)
 
+def printOptions():
+	msg = """usage: trav.py [options]
+
+Options:
+	-h, --help       This help menu.
+	-d <directory>, --directory=<directory>    Give a directory name to work in.
+"""
+	print(msg)
+
 def main(argv):
 	dirName = '';
 	try:
-		opts, args = getopt.getopt(argv,"hd:",["help=", "dir=:"])
+		opts, args = getopt.getopt(argv,"hd:",["help", "directory="])
 	except getopt.GetoptError:
-		print('usage: trav.py -d <directory name>')
+		printOptions()
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt in ('-h', "--help"):
-			print('usage: trav.py -d <directory name>')
+			print('asking help :P')
+			printOptions()
 			sys.exit()
-		elif opt in ("-d", "--dir"):
+		elif opt in ("-d", "--directory"):
 			if arg != '':
 				path = os.path.dirname(os.path.abspath(__file__)) + "/" + arg
 				if os.path.isdir(path):
@@ -31,6 +41,9 @@ def main(argv):
 				else:
 		 			print('Directory "' + arg + '" does not exists')
 		 			sys.exit()
+			else:
+				printOptions()
+				sys.exit(2)
 
 
 	if dirName == '':
